@@ -1,0 +1,30 @@
+<div class="row align-items-center justify-content-between">
+  <div class="col-4">
+    books
+  </div>
+  <div class="col-4">
+      <a class="btn btn-secondary btn-sm" routerLink="/books/new">Create</a>
+  </div>
+</div>>
+<hr />
+<ul class="list-group">
+  <li 
+    class="list-group-item" 
+    *ngFor="let book of books"
+    [routerLink]="['/books', book.id]">
+    {{ book.title }}
+  </li>
+</ul>
+<nav class="mt-1">
+  <ul class="pagination">
+    <li
+      *ngFor="let page of totalPages"
+      [ngClass]="{'page-item': true, 'active': page == currentPage}">
+      <a  
+        class="page-link"
+        [routerLink]="['/books']" [queryParams]="{ page: page}">
+        {{ page }}
+      </a>
+    </li>
+  </ul>
+</nav>

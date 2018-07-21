@@ -1,0 +1,54 @@
+<div class="row align-items-center justify-content-between">
+  <div class="col-4">
+    <h2>{{ book.title }}</h2>
+  </div>
+  <div class="col-4">
+    <a
+      class="btn btn-secondary btn-sm"
+      [routerLink]="['/books', book.id, 'edit']">Edit</a>
+  </div>
+</div>
+<hr />
+<div class="card">
+  <div class="card-header">Detail</div>
+  <div class="card-block">
+    <h2 class="card-title">Description</h2>
+    <p class="card-text">{{ book.description }}</p>
+  </div>
+  <div class="card-footer text-muted">
+    <div class="btn-group">
+      <button 
+        *ngIf="book.prevId"
+        class="btn  btn-secondary btn-sm"
+        (click)="onPrev()">Previous</button>
+      <button 
+        *ngIf="book.nextId"
+        class="btn  btn-secondary btn-sm"
+        (click)="onNext()">Next</button>
+    </div>
+  </div>
+</div>
+<hr />
+<ul class="nav nav-tabs">
+  <!-- <li class="nav-items">
+      <a class="nav-link"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true}"
+        [routerLink]="['/']">Content</a>
+    </li> -->
+  <li class="nav-items">
+    <a class="nav-link"
+      routerLinkActive="active"
+      [routerLink]="['/books', book.id, 'content']">Content</a>
+  </li>
+  <li class="nav-items">
+    <a
+      routerLinkActive="active"
+      class="nav-link" [routerLink]="['/books', book.id, 'reviews']">Reviews</a>
+  </li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane active">
+    <router-outlet></router-outlet>
+  </div>
+</div>
